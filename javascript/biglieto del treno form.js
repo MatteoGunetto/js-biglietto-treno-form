@@ -7,7 +7,7 @@
 // variabili globali
 const bottone = document.getElementById("calcola");
 const annulla = document.getElementById("reset");
-let name, distanzaKm, prezzo, anniPasseggero, sale
+let name, distanzaKm, prezzo, anniPasseggero, biglietto
 
 bottone.addEventListener("click", 
 function(){
@@ -26,26 +26,26 @@ function(){
 
     anniPasseggero = document.getElementById("anniPasseggero").value;
 
-    sale = "Biglietto Standard";
+    biglietto = "Biglietto Standard";
 
     if( anniPasseggero=="1" ) {
-        sale = "Biglietto Ridotto";
+        biglietto = "Biglietto Ridotto";
         sconto = (prezzo * 20) /100;
         prezzo = prezzo - sconto; 
 
     } else if ( anniPasseggero=="3") {
-        sale = "Biglietto Over 65";
+        biglietto = "Biglietto Over 65";
         sconto = (prezzo * 40) /100;
         prezzo = prezzo - sconto ; 
     }
 
-    console.log("Offerta: " , sale);
+    console.log("Offerta: " , biglietto);
     console.log(`Prezzo scontato: ${prezzo}`);
 
 
     document.getElementById("ticketName").innerText = username;
-    document.getElementById("ticketSale").innerText = sale;
-    document.getElementById("ticketprezzo").innerText = prezzo.toFixed(2)+"€";
+    document.getElementById("biglietto").innerText = biglietto;
+    document.getElementById("prezzo").innerText = prezzo.toFixed(2)+"€";
 
 } );
 
@@ -53,6 +53,6 @@ annulla.addEventListener("click", function() {
 
     document.getElementById("name").value = "";
     document.getElementById("km").value = "";
-    document.getElementById("age").value = "";
+    document.getElementById("anniPasseggero").value = "";
 
 });
