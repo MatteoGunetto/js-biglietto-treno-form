@@ -9,32 +9,58 @@
     <title>Biglietto del treno form</title>
 </head>
 <body>
-    <div class="sfondo">
-        <div class="backgroung">
-            <h1>Il Prezzo del biglietto è:</h1>
-            <h2 id="totale"></h2>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
+        <div class="row d-flex justify-content-betwween">
+            <div class="col-4">
+                <label for="name">Nome Cognome</label>
+                <input type="text" id="name" placeholder="Inserisci nome e cognome">
+            </div>
+            <div class="col-4">
+                <label for="km">Km da percorrere</label>
+                <input type="number" id="km" placeholder="Inserisci i km da percorrere">
+            </div>
+            <div class="col-4">
+                <label for="anniPasseggero">Fascia di età</label>
+                <select id="anniPasseggero">
+                    <option value="1">Minorenne </option>
+                    <option value="2">Maggiorenne </option>
+                    <option value="3">Over 65</option>
+                </select>
+            </div>           
+            <div class="col-12 d-flex justify-content-center mt-5">
+                <button id="calcola"  class="m-2 btn btn-primary">Calcola</button>
+                <button id="reset" class="m-2 btn btn-primary">Annulla</button>
+            </div>
         </div>
+        <div class="card mt-5">
+            <div class="row">
+                <h3>Dettagli passeggero</h3>
+                <hr class="px-5">
+                <div class="col-4">
+                    <div class="fw-bold">Nome passeggero:</div>
+                    <div id="ticketName"></div>
+                </div>
+                <div class="col-2">
+                    <div class="fw-bold">Offerta:</div>
+                    <div id="ticketSale"></div>
+                </div>
+                <div class="col-2">
+                    <div class="fw-bold">Carrozza:</div>
+                    <div>12</div>
+                </div>
+                <div class="col-2">
+                    <div class="fw-bold">Codice CP:</div>
+                    <div>0594</div>
+                </div>
+                <div class="col-2">
+                    <div class="fw-bold">Costo biglietto:</div>
+                    <div id="ticketprezzo"></div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <script src="javascript/biglieto del treno form.js"></script>
 </body>

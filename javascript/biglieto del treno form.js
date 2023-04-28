@@ -5,42 +5,54 @@
 // L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo).
 
 // variabili globali
-let anniPasseggero, distanzaKm, sconto, prezzo;
-const euroKm=0.21
+const bottone = document.getElementById("calcola");
+const annulla = document.getElementById("reset");
+let name, distanzaKm, prezzo, anniPasseggero, sale
+
+bottone.addEventListener("click", 
+function(){
+
+    const euroKm = 0.21;
+    username = document.getElementById("name").value;
+    distanzaKm = parseInt(document.getElementById("km").value);
+    prezzo = 0;
 
 
+    console.log(`Passegero: ${username}`)
+    console.log(`Km: ${distanzaKm}`)
 
-distanzaKm = parseInt(prompt('Quanti km vuoi percorrere? '));
+    prezzo = distanzaKm * euroKm;
+    console.log(`Prezzo di base: ${prezzo}`);
 
-anniPasseggero = parseInt(prompt('Quanti anni hai? '));
+    anniPasseggero = document.getElementById("anniPasseggero").value;
 
-    // il prezzo del biglietto è definito in base ai km (0.21 € al km)
-prezzo = distanzaKm * euroKm ;
+    sale = "Biglietto Standard";
 
-    // va applicato uno sconto del 20% per i minorenni
+    if( anniPasseggero=="1" ) {
+        sale = "Biglietto Ridotto";
+        sconto = (prezzo * 20) /100;
+        prezzo = prezzo - sconto; 
 
-if( anniPasseggero < 18){
+    } else if ( anniPasseggero=="3") {
+        sale = "Biglietto Over 65";
+        sconto = (prezzo * 40) /100;
+        prezzo = prezzo - sconto ; 
+    }
 
-    sconto = (prezzo * 20) /100;
-    prezzo = prezzo - sconto; 
+    console.log("Offerta: " , sale);
+    console.log(`Prezzo scontato: ${prezzo}`);
 
-    // va applicato uno sconto del 40% per gli over 65.
 
-}else if( anniPasseggero >=  65)
-{
-    sconto = (prezzo * 40) /100;
-    prezzo = prezzo - sconto ; 
-   
+    document.getElementById("ticketName").innerText = username;
+    document.getElementById("ticketSale").innerText = sale;
+    document.getElementById("ticketprezzo").innerText = prezzo.toFixed(2)+"€";
 
-}
+} );
 
-// else{
-//     sconto = 0;
-    
-// }
-console.log(sconto)
-console.log(prezzo)
+annulla.addEventListener("click", function() {
 
-// L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo).
+    document.getElementById("name").value = "";
+    document.getElementById("km").value = "";
+    document.getElementById("age").value = "";
 
-document.getElementById('totale').innerHTML = prezzo.toFixed(2)+"€"; 
+});
